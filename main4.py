@@ -53,10 +53,16 @@ while playagain() == True:
     else:
         print("Nice try {} you got {} out of 3 correct on the flag quiz".format(name, score))
     print("Thanks for playing the Flag Quiz")
-    playagain3 = input("Would you like to play again? ")
-    if playagain3.lower() == "yes":
-        playagain("yes")
-    elif playagain3.lower() == "no":
-        playagain("no")
-    else:
+    answercorrectly = False
+    while answercorrectly == False:
+        playagain3 = input("Would you like to play again? ")
+        if playagain3.lower() == "yes":
+            playagain("yes")
+            answercorrectly = True
+        elif playagain3.lower() == "no":
+            playagain("no")
+            answercorrectly = True
+        else:
+            print("Please answer with Yes or No")
+
 
