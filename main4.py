@@ -1,23 +1,30 @@
-
-def playagain(playagain2):
-    if playagain2.lower() == "yes":
+def playagain():
+    if start == -1:
         return True
-    else:
-        return False
-playagain("yes")
+    while True:
+        playagain3 = input("Would you like to play again? ")
+        if playagain3.lower() == "yes":
+            return True
+        elif playagain3.lower() == "no":
+            print("Thank you for playing the Flag Quiz")
+            return False
+        else:
+            print("Please answer with Yes or No")
+start = -1
+#getting persons name
+print("Hello Random Person")
+name = input("what is your name? ")
+#introducing them to the quiz
+print ("Welcome", name, "to the Flag Quiz")
 while playagain() == True:
     #setting values
+    start = 0
     score = 0
     a2 = "red"
     b2 = "blue"
     c2 = "white"
     list1 = [a2, "a"]
     list2 = [b2, "b", c2, "c"]
-    #getting persons name
-    print("Hello Random Person")
-    name = input("what is your name? ")
-    #introducing them to the quiz
-    print ("Welcome", name, "to the Flag Quiz")
     #first question
     answer1 = input("What country has veritcal red, white and blue stripes on its flag? ")
     #check the answer
@@ -51,18 +58,7 @@ while playagain() == True:
     elif(score == 2):
         print("Nice try {} you got {} out of 3 correct on the flag quiz".format(name, score))
     else:
-        print("Nice try {} you got {} out of 3 correct on the flag quiz".format(name, score))
-    print("Thanks for playing the Flag Quiz")
-    answercorrectly = False
-    while answercorrectly == False:
-        playagain3 = input("Would you like to play again? ")
-        if playagain3.lower() == "yes":
-            playagain("yes")
-            answercorrectly = True
-        elif playagain3.lower() == "no":
-            playagain("no")
-            answercorrectly = True
-        else:
-            print("Please answer with Yes or No")
+        print("Better luck next time {}. You got {} out of 3 correct on the flag quiz".format(name, score))
+    playagain()
 
 
