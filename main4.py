@@ -1,22 +1,23 @@
 def playagain():
-    if start == -1:
-        return True
+    global keepplaying
     while True:
         playagain3 = input("Would you like to play again? ")
         if playagain3.lower() == "yes":
-            return True
+            keepplaying = True
+            return
         elif playagain3.lower() == "no":
             print("Thank you for playing the Flag Quiz")
-            return False
+            keepplaying = False
+            return 
         else:
             print("Please answer with Yes or No")
-start = -1
+keepplaying = True
 #getting persons name
 print("Hello Random Person")
 name = input("what is your name? ")
 #introducing them to the quiz
 print ("Welcome", name, "to the Flag Quiz")
-while playagain() == True:
+while keepplaying == True:
     #setting values
     start = 0
     score = 0
