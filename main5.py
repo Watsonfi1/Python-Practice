@@ -1,11 +1,14 @@
 def playagain():
+    global keepplaying
     while True:
         playagain3 = input("Would you like to play again? ")
         if playagain3.lower() == "yes":
-            return True
+            keepplaying = True
+            return
         elif playagain3.lower() == "no":
             print("Thank you for playing the Flag Quiz")
-            return False
+            keepplaying = False
+            return 
         else:
             print("Please answer with Yes or No")
 keepplaying = True
@@ -91,6 +94,6 @@ while keepplaying == True:
         print("Nice try {} you got {} out of 3 correct on the flag quiz".format(name, score))
     else:
         print("Better luck next time {}. You got {} out of 3 correct on the flag quiz".format(name, score))
-    keepplaying = playagain()
+    playagain()
 
 
