@@ -1,3 +1,4 @@
+import random
 def playagain():
     global keepplaying
     while True:
@@ -15,9 +16,16 @@ keepplaying = True
 a2 = "red"
 b2 = "blue"
 c2 = "white"
+d2 = "purple"
 list1 = [a2, "a"]
-list2 = [b2, "b", c2, "c"]
+list2 = [b2, "b", c2, "c", d2, "d"]
 QTRIES = ["1", "2", "3", "4"]
+QFORMAT = "{}\n A. {} B. {} C. {} D. {} "
+QUESTIONS = ["What country has veritcal red, white and blue stripes on its flag? ",
+                "What country has the only flag that isn't rectangular? ",
+                    "What is the most common colour on flags?"]
+GOOD_COMMENTS = ["Nice job", "Going strong", "Keep up the good work"]
+BAD_COMMENTS = ["Nice try", "Keep trying", "Better luck next time"]
 #getting persons name
 print("Hello Random Person")
 name = input("what is your name? ")
@@ -34,15 +42,19 @@ while keepplaying == True:
             break
         print("That is not a number 1-4 please input a valid input.")
     while q1tries > 0:
-        answer1 = input("What country has veritcal red, white and blue stripes on its flag? ")
+        answer1 = input(QFORMAT.format(QUESTIONS[0], "Netherlands", "France", "Germany", "USA"))
         #check the answer
-        if("france" in answer1.lower()):
+        if("france" in answer1.lower() or answer1.lower() == "b"):
+            print(random.choice(GOOD_COMMENTS))
             print("You answered correctly!")
             score += 1
             q1tries -= 4
         else:
             q1tries -= 1
             print("That answer was incorrect. You have {} tries left".format(q1tries))
+            print(random.choice(BAD_COMMENTS))
+            if q1tries > 0:
+                print
             if q1tries == 0:
                 print("The answer was France.")
 
@@ -54,15 +66,17 @@ while keepplaying == True:
             break
         print("That is not a number 1-4 please input a valid input.")
     while q2tries > 0:
-        answer2 = input("What country has the only flag that isn't rectangular? ")
+        answer2 = input(QFORMAT.format(QUESTIONS[1],"Cameroon", "France", "Nepal", "Luxembourg"))
         #check the answer
-        if("nepal" in answer2.lower()):
+        if("nepal" in answer2.lower() or answer2.lower() == "c"):
+            print(random.choice(GOOD_COMMENTS))
             print("You answered correctly!")
             score += 1
             q2tries -= 4
         else:
             q2tries -= 1
             print("That answer was incorrect. You have {} tries left".format(q2tries))
+            print(random.choice(BAD_COMMENTS))
             if q2tries == 0:
                 print("The answer was Nepal.")
 
@@ -74,15 +88,17 @@ while keepplaying == True:
             break
         print("That is not a number 1-4 please input a valid input.")
     while q3tries > 0:
-        answer3 = input("What is the most common colour on flags?\nA. {}\nB. {}\nC. {}\n".format(a2, b2, c2))
+        answer3 = input(QFORMAT.format(QUESTIONS[2], a2, b2, c2, d2))
         #check the answer
         if(answer3.lower() in list1):
+            print(random.choice(GOOD_COMMENTS))
             print("You answered correctly!")
             score += 1
             q3tries -= 4
         else:
             q3tries -= 1
             print("That answer was incorrect. You have {} tries left".format(q3tries))
+            print(random.choice(BAD_COMMENTS))
             if q3tries == 0:
                 print("The answer was Red.")
 
