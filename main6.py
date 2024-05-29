@@ -1,4 +1,5 @@
 #--------Functions--------------
+#--------------------------------Password is 3874---------------------------------------------------------------------------------------#
 def password():
     attempts = 3
     while attempts > 0:
@@ -17,12 +18,13 @@ def intro():
     name = input("What is your name? ")
     print("Welcome {} to the quiz".format(name))
 
-def questions(question,correctanswer):
+def questions(question,correctanswer,options):
     global livesvar
     global score
     if livesvar > 0:
-        answer = input(question)
-        if answer.lower() == correctanswer:
+        
+        answer = input("{}\n A. {} B. {} C. {} D. {} ".format(question,options[0],options[1],options[2],options[3]))
+        if answer.lower() in correctanswer:
             print("Correct answer")
             score += 1
         else: 
@@ -62,6 +64,8 @@ def playagain():
 QUESTIONS = ["What country has veritcal red, white and blue stripes on its flag? ",
                 "What country has the only flag that isn't rectangular? ",
                     "What is the most common colour on flags?"]
+ANSWERS = [["france","b"], ["nepal", "c"], ["red", "a"]]
+OPTIONS = [["Netherlands", "France", "Germany", "USA"],["Cameroon", "France", "Nepal", "Luxembourg"],["red","blue","white","purple"]]
 play = True
 
 
@@ -73,7 +77,6 @@ if passwordstate == True:
     while play == True:
         score = 0
         lives()
-        questions(QUESTIONS[0],"france")
-        questions(QUESTIONS[1],"nepal")
-        questions(QUESTIONS[2],"red")
+        for x in range(len(QUESTIONS)):
+            questions(QUESTIONS[x],ANSWERS[x],OPTIONS[x])
         playagain()

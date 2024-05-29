@@ -12,6 +12,8 @@ def playagain():
             return 
         else:
             print("Please answer with Yes or No")
+
+
 keepplaying = True
 a2 = "red"
 b2 = "blue"
@@ -26,6 +28,10 @@ QUESTIONS = ["What country has veritcal red, white and blue stripes on its flag?
                     "What is the most common colour on flags?"]
 GOOD_COMMENTS = ["Nice job", "Going strong", "Keep up the good work"]
 BAD_COMMENTS = ["Nice try", "Keep trying", "Better luck next time"]
+ANSWERS = ["france","nepal","red"]
+SHORTOPTIONS = ["b","c","a"]
+OPTIONS = [["Netherlands", "France", "Germany", "USA"],["Cameroon", "France", "Nepal", "Luxembourg"],["red","blue","white","purple"]]
+
 #getting persons name
 print("Hello Random Person")
 name = input("what is your name? ")
@@ -35,74 +41,27 @@ while keepplaying == True:
     #setting values
     score = 0
     #first question
-    while True:
-        q1tries = input("How many times do you want to try again if you get it wrong? 1-4 ")
-        if q1tries in QTRIES:
-            q1tries = int(q1tries)
-            break
-        print("That is not a number 1-4 please input a valid input.")
-    while q1tries > 0:
-        answer1 = input(QFORMAT.format(QUESTIONS[0], "Netherlands", "France", "Germany", "USA"))
-        #check the answer
-        if("france" in answer1.lower() or answer1.lower() == "b"):
-            print(random.choice(GOOD_COMMENTS))
-            print("You answered correctly!")
-            score += 1
-            q1tries -= 4
-        else:
-            q1tries -= 1
-            print("That answer was incorrect. You have {} tries left".format(q1tries))
-            print(random.choice(BAD_COMMENTS))
-            if q1tries > 0:
-                print
-            if q1tries == 0:
-                print("The answer was France.")
-
-
-    while True:
-        q2tries = input("How many times do you want to try again if you get it wrong? 1-4 ")
-        if q2tries in QTRIES:
-            q2tries = int(q2tries)
-            break
-        print("That is not a number 1-4 please input a valid input.")
-    while q2tries > 0:
-        answer2 = input(QFORMAT.format(QUESTIONS[1],"Cameroon", "France", "Nepal", "Luxembourg"))
-        #check the answer
-        if("nepal" in answer2.lower() or answer2.lower() == "c"):
-            print(random.choice(GOOD_COMMENTS))
-            print("You answered correctly!")
-            score += 1
-            q2tries -= 4
-        else:
-            q2tries -= 1
-            print("That answer was incorrect. You have {} tries left".format(q2tries))
-            print(random.choice(BAD_COMMENTS))
-            if q2tries == 0:
-                print("The answer was Nepal.")
-
-
-    while True:
-        q3tries = input("How many times do you want to try again if you get it wrong? 1-4 ")
-        if q3tries in QTRIES:
-            q3tries = int(q3tries)
-            break
-        print("That is not a number 1-4 please input a valid input.")
-    while q3tries > 0:
-        answer3 = input(QFORMAT.format(QUESTIONS[2], a2, b2, c2, d2))
-        #check the answer
-        if(answer3.lower() in list1):
-            print(random.choice(GOOD_COMMENTS))
-            print("You answered correctly!")
-            score += 1
-            q3tries -= 4
-        else:
-            q3tries -= 1
-            print("That answer was incorrect. You have {} tries left".format(q3tries))
-            print(random.choice(BAD_COMMENTS))
-            if q3tries == 0:
-                print("The answer was Red.")
-
-
+    for x in range(len(QUESTIONS)):
+        while True:
+            q1tries = input("How many times do you want to try again if you get it wrong? 1-4 ")
+            if q1tries in QTRIES:
+                q1tries = int(q1tries)
+                break
+            print("That is not a number 1-4 please input a valid input.")
+        while q1tries > 0:
+            answer = input(QFORMAT.format(QUESTIONS[x], OPTIONS[x][0], OPTIONS[x][1], OPTIONS[x][2], OPTIONS[x][3]))
+            #check the answer
+            if(ANSWERS[x] in answer.lower() or answer.lower() == SHORTOPTIONS[x]):
+                print(random.choice(GOOD_COMMENTS))
+                print("You answered correctly!")
+                score += 1
+                q1tries -= 4
+            else:
+                q1tries -= 1
+                print("That answer was incorrect. You have {} tries left".format(q1tries))
+                print(random.choice(BAD_COMMENTS))
+                if q1tries == 0:
+                    print("The answer was {}.".format(OPTIONS[x][ANSWERS[x]]))
     #finish the quiz
     if(score == 3):
         print("Congrats {} you got {} out of 3 correct on the flag quiz".format(name, score))
